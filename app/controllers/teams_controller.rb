@@ -48,6 +48,18 @@ class TeamsController < ApplicationController
     @team = current_user.keep_team_id ? Team.find(current_user.keep_team_id) : current_user.teams.first
   end
 
+  def transfer_owner
+    @user = Assign.find(params[:id]).user
+    @team = Team.friendly.find(params[:team_id])
+    @team.owner_id = @user.id
+    if @team.save
+      redirect_to @team, notice: I18n.t('views.messages.changed_leader')
+    else
+      flash.now[:error] = I18n.t('views.messages.failed_to_change_leader')
+      render :show
+    end
+  end
+
   private
 
   def set_team
