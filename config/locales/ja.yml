@@ -255,6 +255,10 @@ ja:
       cannot_edit_team_infomation: 'オーナー以外はチームの編集はできません'
       changed_leader: 'チームリーダーを変更しました'
       failed_to_change_leader: 'リーダー権限が渡せませんでした'
+      delete_agenda: 'アジェンダを削除しました'
+      can_not_delete_agenda: 'アジェンダを削除できるのは作成者かチームリーダーです'
+      mail_delete_agenda: 'アジェンダが削除されました'
+      confirm: '本当に削除しますか'
     button:
       submit: '投稿'
       edit: '編集'
