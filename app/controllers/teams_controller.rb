@@ -53,6 +53,7 @@ class TeamsController < ApplicationController
     @team = Team.friendly.find(params[:team_id])
     @team.owner_id = @user.id
     if @team.save
+      TeamMailer.team_mail(@user.email, @team).deliver
       redirect_to @team, notice: I18n.t('views.messages.changed_leader')
     else
       flash.now[:error] = I18n.t('views.messages.failed_to_change_leader')
